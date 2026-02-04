@@ -1,4 +1,4 @@
-package dev.meow.zeta.injection.mixins.entity;
+package dev.meow.zeta.injection.mixins.minecraft.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.meow.zeta.event.EventManager;
@@ -7,7 +7,6 @@ import dev.meow.zeta.events.player.PlayerMoveEvent;
 import dev.meow.zeta.events.player.PlayerMovementPacketsEvent;
 import dev.meow.zeta.events.player.PlayerMovementTickEvent;
 import dev.meow.zeta.events.player.PlayerTickEvent;
-import dev.meow.zeta.features.module.ModuleManager;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.phys.Vec3;

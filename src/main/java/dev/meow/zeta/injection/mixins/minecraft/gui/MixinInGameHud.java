@@ -1,4 +1,4 @@
-package dev.meow.zeta.injection.mixins.gui;
+package dev.meow.zeta.injection.mixins.minecraft.gui;
 
 import dev.meow.zeta.render.OverlayRenderer;
 import net.minecraft.client.DeltaTracker;

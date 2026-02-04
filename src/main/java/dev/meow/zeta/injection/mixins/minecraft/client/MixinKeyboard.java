@@ -1,4 +1,4 @@
-package dev.meow.zeta.injection.mixins.client;
+package dev.meow.zeta.injection.mixins.minecraft.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.meow.zeta.event.EventManager;
