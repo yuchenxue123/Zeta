@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "zeta",
+  "version": "${version}",
+  "name": "Zeta",
+  "description": "A",
+  "authors": [
+    "yuchenxue"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=1.13.7+kotlin.2.2.21"
+  },
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "dev.meow.zeta.Zeta"
+      }
+    ],
+    "fabric-datagen": [
+    ]
+  },
+  "mixins": [
+    "zeta.mixins.json"
+  ],
+  "suggests": {
+    "another-mod": "*"
+  },
+  "accessWidener": "zeta.accesswidener"
+}

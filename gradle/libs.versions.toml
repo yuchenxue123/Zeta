@@ -1,0 +1,52 @@
+[versions]
+# Kotlin
+kotlin = "2.2.21"
+coroutines = "1.10.2"
+detekt = "1.23.8"
+# Fabric
+minecraft = "1.21.11"
+fabric-loom = "1.14.10"
+fabric-loader = "0.18.4"
+fabric-kotlin = "1.13.7+kotlin.2.2.21"
+fabric-api = "0.141.2+1.21.11"
+# LWJGL
+lwjgl = "3.3.3"
+# Skiko
+# https://github.com/JetBrains/skiko
+skiko = "0.9.37.3"
+# Polyglot
+polyglot = "25.0.1"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+fabric-loom = { id = "fabric-loom", version.ref = "fabric-loom" }
+
+[libraries]
+# Kotlin
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+# Fabric
+minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+fabric-loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "fabric-loader" }
+fabric-kotlin = { group = "net.fabricmc", name = "fabric-language-kotlin", version.ref = "fabric-kotlin" }
+fabric-api = { group = "net.fabricmc.fabric-api", name = "fabric-api", version.ref = "fabric-api" }
+# LWJGL
+lwjgl-nanovg = { group = "org.lwjgl", name = "lwjgl-nanovg", version.ref = "lwjgl" }
+lwjgl-vulkan = { group = "org.lwjgl", name = "lwjgl-vulkan", version.ref = "lwjgl" }
+# Skiko
+skiko = { group = "org.jetbrains.skiko", name = "skiko-awt", version.ref = "skiko" }
+skiko-runtime-all = { group = "org.jetbrains.skiko", name = "skiko-awt-runtime-all", version.ref = "skiko" }
+skiko-runtime-windows = { group = "org.jetbrains.skiko", name = "skiko-awt-runtime-windows-x64", version.ref = "skiko" }
+skiko-runtime-linux = { group = "org.jetbrains.skiko", name = "skiko-awt-runtime-linux-x64", version.ref = "skiko" }
+skiko-runtime-macos = { group = "org.jetbrains.skiko", name = "skiko-awt-runtime-macos-arm64", version.ref = "skiko" }
+# Polyglot
+polyglot = { group = "org.graalvm.polyglot", name = "polyglot", version.ref = "polyglot" }
+polyglot-js = { group = "org.graalvm.polyglot", name = "js", version.ref = "polyglot" }
+polyglot-tools = { group = "org.graalvm.polyglot", name = "tools", version.ref = "polyglot" }
+
+
+[bundles]
+kotlins = ["kotlin-stdlib", "kotlin-reflect", "kotlinx-coroutines"]

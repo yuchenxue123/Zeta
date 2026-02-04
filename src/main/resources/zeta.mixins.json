@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "package": "dev.meow.zeta.injection.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "client.MixinKeyboard",
+    "client.MixinMinecraft",
+    "entity.MixinLocalPlayer",
+    "gui.MixinInGameHud"
+  ],
+  "mixins": [
+    "entity.MixinEntity",
+    "entity.MixinLivingEntity",
+    "entity.MixinPlayer",
+    "network.MixinConnection"
+  ]
+}
