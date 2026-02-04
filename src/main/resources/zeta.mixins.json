@@ -9,15 +9,15 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.MixinKeyboard",
-    "client.MixinMinecraft",
-    "entity.MixinLocalPlayer",
-    "gui.MixinInGameHud"
+    "minecraft.client.MixinKeyboard",
+    "minecraft.client.MixinMinecraft",
+    "minecraft.entity.MixinLocalPlayer",
+    "minecraft.gui.MixinInGameHud"
   ],
   "mixins": [
-    "entity.MixinEntity",
-    "entity.MixinLivingEntity",
-    "entity.MixinPlayer",
-    "network.MixinConnection"
+    "minecraft.entity.MixinEntity",
+    "minecraft.entity.MixinLivingEntity",
+    "minecraft.entity.MixinPlayer",
+    "minecraft.network.MixinConnection"
   ]
 }

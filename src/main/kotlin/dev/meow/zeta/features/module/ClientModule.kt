@@ -1,7 +1,6 @@
 package dev.meow.zeta.features.module
 
 import dev.meow.zeta.config.Configurable
-import dev.meow.zeta.core.Category
 import dev.meow.zeta.core.Toggleable
 import dev.meow.zeta.event.EventListener
 import dev.meow.zeta.event.EventManager
