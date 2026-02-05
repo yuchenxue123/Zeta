@@ -1,4 +1,4 @@
-package dev.meow.zeta.injection.mixins.entity;
+package dev.meow.zeta.injection.mixins.minecraft.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import dev.meow.zeta.event.EventManager;

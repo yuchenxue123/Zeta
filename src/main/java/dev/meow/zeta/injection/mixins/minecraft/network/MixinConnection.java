@@ -1,4 +1,4 @@
-package dev.meow.zeta.injection.mixins.network;
+package dev.meow.zeta.injection.mixins.minecraft.network;
 
 import dev.meow.zeta.event.EventManager;
 import dev.meow.zeta.events.PacketType;
