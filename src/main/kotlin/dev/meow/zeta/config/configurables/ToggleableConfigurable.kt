@@ -1,5 +1,6 @@
 package dev.meow.zeta.config.configurables
 
+import dev.meow.zeta.Zeta
 import dev.meow.zeta.config.Configurable
 import dev.meow.zeta.config.Setting
 import dev.meow.zeta.config.settings.BooleanSetting
@@ -31,7 +32,7 @@ class ToggleableConfigurable(
             runCatching {
                 removeEventListenerScope()
             }.onFailure {
-                error("failed cancel sequences: $it")
+                Zeta.logger.error("Failed cancel sequences: ${it.message}", it)
             }
         }
 
