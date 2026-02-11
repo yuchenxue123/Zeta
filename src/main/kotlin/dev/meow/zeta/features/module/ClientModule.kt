@@ -1,5 +1,6 @@
 package dev.meow.zeta.features.module
 
+import dev.meow.zeta.Zeta
 import dev.meow.zeta.config.Configurable
 import dev.meow.zeta.core.Toggleable
 import dev.meow.zeta.event.EventListener
@@ -36,7 +37,7 @@ open class ClientModule(
             runCatching {
                 removeEventListenerScope()
             }.onFailure {
-                error("失败取消: $it")
+                Zeta.logger.error("Failed cancel sequences: ${it.message}", it)
             }
         }
 

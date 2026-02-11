@@ -2,6 +2,7 @@ package dev.meow.zeta.ui.component
 
 import dev.meow.zeta.render.RenderUtils
 import dev.meow.zeta.render.engine.Rect
+import dev.meow.zeta.render.graphics.RenderStyle
 import dev.meow.zeta.utils.animation.ColorAnimation
 import dev.meow.zeta.utils.animation.Easing
 import dev.meow.zeta.utils.animation.SimpleAnimation
@@ -99,7 +100,7 @@ class CheckboxComponent(
             knobX,
             knobY,
             knobRadius,
-            knobColor
+            RenderStyle(knobColor)
         )
     }
 
