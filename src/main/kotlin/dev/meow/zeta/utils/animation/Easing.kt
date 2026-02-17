@@ -74,7 +74,4 @@ interface Easing {
 
     }
 
-
-
-
 }
