@@ -9,9 +9,13 @@ import dev.meow.zeta.render.graphics.PaintMode
 import dev.meow.zeta.render.graphics.font.FontRenderer
 import dev.meow.zeta.render.graphics.RenderCallback
 import dev.meow.zeta.render.graphics.RenderContext
-import dev.meow.zeta.render.graphics.RenderStyle
+import dev.meow.zeta.render.graphics.style.GradientStyle
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import dev.meow.zeta.utils.extension.toRadians
+import dev.meow.zeta.utils.misc.Pools
 import net.minecraft.client.gui.GuiGraphics
+import org.lwjgl.nanovg.NVGColor
+import org.lwjgl.nanovg.NVGPaint
 import org.lwjgl.nanovg.NanoVG
 import org.lwjgl.nanovg.NanoVGGL3
 import java.awt.Color
@@ -29,6 +33,12 @@ object NanoRenderContext : RenderContext {
 
         FontManager.initialize(NanoFontRendererProvider)
     }
+
+    private val paint = NVGPaint.malloc()
+
+    private val color = NVGColor.malloc()
+
+    private val color2 = NVGColor.malloc()
 
     override fun save() {
         NanoVG.nvgSave(context)
@@ -91,6 +101,35 @@ object NanoRenderContext : RenderContext {
         }
     }
 
+    override fun drawGradientRect(x: Float, y: Float, width: Float, height: Float, style: GradientStyle) {
+        withColor(style.first, style.second) {color, color2 ->
+            NanoVG.nvgBeginPath(context)
+            NanoVG.nvgRect(context, x, y, width, height)
+            when (style.orientation) {
+                Orientation.HORIZONTAL -> {
+                    NanoVG.nvgLinearGradient(context, x, y, x + width, y, color, color2, paint)
+                }
+
+                Orientation.VERTICAL -> {
+                    NanoVG.nvgLinearGradient(context, x, y, x, y + height, color, color2, paint)
+                }
+            }
+
+            when (style.mode) {
+                PaintMode.FILL -> {
+                    NanoVG.nvgFillPaint(context, paint)
+                    NanoVG.nvgFill(context)
+                }
+
+                PaintMode.STROKE -> {
+                    NanoVG.nvgStrokePaint(context, paint)
+                    NanoVG.nvgStrokeWidth(context, style.thickness)
+                    NanoVG.nvgStroke(context)
+                }
+            }
+        }
+    }
+
     override fun drawRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, style: RenderStyle) {
         withColor(style.color) { color ->
             NanoVG.nvgBeginPath(context)
@@ -104,6 +143,42 @@ object NanoRenderContext : RenderContext {
 
                 PaintMode.STROKE -> {
                     NanoVG.nvgStrokeColor(context, color)
+                    NanoVG.nvgStrokeWidth(context, style.thickness)
+                    NanoVG.nvgStroke(context)
+                }
+            }
+        }
+    }
+
+    override fun drawGradientRoundRect(
+        x: Float,
+        y: Float,
+        width: Float,
+        height: Float,
+        radius: Float,
+        style: GradientStyle
+    ) {
+        withColor(style.first, style.second) {color, color2 ->
+            NanoVG.nvgBeginPath(context)
+            NanoVG.nvgRoundedRect(context, x, y, width, height, radius)
+            when (style.orientation) {
+                Orientation.HORIZONTAL -> {
+                    NanoVG.nvgLinearGradient(context, x, y, x + width, y, color, color2, paint)
+                }
+
+                Orientation.VERTICAL -> {
+                    NanoVG.nvgLinearGradient(context, x, y, x, y + height, color, color2, paint)
+                }
+            }
+
+            when (style.mode) {
+                PaintMode.FILL -> {
+                    NanoVG.nvgFillPaint(context, paint)
+                    NanoVG.nvgFill(context)
+                }
+
+                PaintMode.STROKE -> {
+                    NanoVG.nvgStrokePaint(context, paint)
                     NanoVG.nvgStrokeWidth(context, style.thickness)
                     NanoVG.nvgStroke(context)
                 }

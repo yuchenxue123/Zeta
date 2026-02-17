@@ -1,9 +1,11 @@
 package dev.meow.zeta.features.module
 
 import dev.meow.zeta.core.Nameable
+import java.awt.Color
 
 class Category private constructor(
     override val showName: String,
+    val color: Color
 ) : Nameable {
 
     companion object {
@@ -13,18 +15,18 @@ class Category private constructor(
         val categories: Collection<Category>
             get() = map.values
 
-        val COMBAT = of("Combat")
+        val COMBAT = create("Combat", Color(255, 82, 82))
 
-        val MOVEMENT = of("Movement")
+        val MOVEMENT = create("Movement", Color(68, 138, 255))
 
-        val PLAYER = of("Player")
+        val PLAYER = create("Player", Color(255, 171, 64))
 
-        val RENDER = of("Redner")
+        val RENDER = create("Redner", Color(105, 240, 174))
 
-        val MISC = of("Misc")
+        val MISC = create("Misc", Color(128, 128, 128))
 
-        fun of(name: String): Category {
-            val category = Category(name)
+        fun create(name: String, color: Color): Category {
+            val category = Category(name, color)
             map.putIfAbsent(name, category)
             return category
         }

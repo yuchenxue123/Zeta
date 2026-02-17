@@ -13,25 +13,23 @@ import net.minecraft.client.gui.GuiGraphics
 
 object DropdownClickScreen : Screen() {
 
-    private val elements = mutableListOf<Element>()
+    val categoryElements = mutableListOf<Element>()
 
     init {
         build()
     }
 
     override fun render(context: GuiGraphics, mouseX: Double, mouseY: Double, deltaTime: Float) {
-
-        elements.forEach { element ->
+        categoryElements.forEach { element ->
             element.render(context, mouseX, mouseY, deltaTime)
         }
-
     }
 
     override fun mouseClicked(mouseX: Double, mouseY: Double, button: Int): Boolean {
 
-        elements.asReversed().forEach { element ->
+        categoryElements.asReversed().forEach { element ->
             if (element.mouseClicked(mouseX, mouseY, button)) {
-                elements.sortedBy { it == element }
+                categoryElements.sortedBy { it == element }
                 return true
             }
         }
@@ -41,7 +39,7 @@ object DropdownClickScreen : Screen() {
 
     override fun mouseReleased(mouseX: Double, mouseY: Double, button: Int): Boolean {
 
-        elements.asReversed().forEach { element ->
+        categoryElements.asReversed().forEach { element ->
             if (element.mouseReleased(mouseX, mouseY, button)) {
                 return true
             }
@@ -51,10 +49,8 @@ object DropdownClickScreen : Screen() {
     }
 
     private fun build() {
-        elements.clear()
-
         Category.categories.forEachIndexed { index, category ->
-            elements.add(
+            categoryElements.add(
                 CategoryElement(
                     category = category,
                     rectangle =  Rectangle.of(

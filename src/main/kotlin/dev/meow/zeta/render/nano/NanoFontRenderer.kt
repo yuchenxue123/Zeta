@@ -31,6 +31,8 @@ class NanoFontRenderer(
         NanoVG.nvgFontSize(context, size)
         NanoVG.nvgFontFaceId(context, font)
 
+        NanoVG.nvgTextBounds(context, 0f, 0f, text, bounds)
+
         return bounds[2] - bounds[0]
     }
 
@@ -61,6 +63,10 @@ class NanoFontRenderer(
         return visitor.final()
     }
 
+    override fun drawCenteredText(text: Component, x: Float, y: Float, width: Float, height: Float, color: Color): Float {
+        return drawText(text, x + (width - width(text)) / 2f, y + (height - height(text)) / 2f, color)
+    }
+
     override fun drawText(text: String, x: Float, y: Float, color: Color): Float {
         return withColor(color) { color ->
             NanoVG.nvgFontSize(context, size)
@@ -69,5 +75,9 @@ class NanoFontRenderer(
 
             NanoVG.nvgText(context, x, y, text)
         }
+    }
+
+    override fun drawCenteredText(text: String, x: Float, y: Float, width: Float, height: Float, color: Color): Float {
+        return drawText(text, x + (width - width(text)) / 2f, y + (height - height(text)) / 2f, color)
     }
 }

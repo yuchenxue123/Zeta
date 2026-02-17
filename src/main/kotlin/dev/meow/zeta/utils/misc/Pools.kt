@@ -12,7 +12,7 @@ object Pools {
 
     val NanoColor = ObjectPool(
         create = NVGColor::malloc,
-        close = NVGColor::free
+        close = NVGColor::close
     )
 
 }

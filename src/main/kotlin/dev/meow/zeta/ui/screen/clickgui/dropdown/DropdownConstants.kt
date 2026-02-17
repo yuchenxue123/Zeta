@@ -10,6 +10,8 @@ object DropdownConstants {
 
     const val CategoryHeight = 50f
 
+    const val CategoryRadius = 8f
+
     const val CategoryHorizontalSpace = 8f
 
 }

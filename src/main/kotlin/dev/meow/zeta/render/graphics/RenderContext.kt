@@ -2,6 +2,8 @@ package dev.meow.zeta.render.graphics
 
 import dev.meow.zeta.render.engine.Positionable
 import dev.meow.zeta.render.graphics.font.FontRenderer
+import dev.meow.zeta.render.graphics.style.GradientStyle
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import net.minecraft.client.gui.GuiGraphics
 import java.awt.Color
 
@@ -11,7 +13,11 @@ interface RenderContext {
 
     fun drawRect(x: Float, y: Float, width: Float, height: Float, style: RenderStyle)
 
+    fun drawGradientRect(x: Float, y: Float, width: Float, height: Float, style: GradientStyle)
+
     fun drawRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, style: RenderStyle)
+
+    fun drawGradientRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, style: GradientStyle)
 
     fun drawCircle(x: Float, y: Float, radius: Float, style: RenderStyle)
 

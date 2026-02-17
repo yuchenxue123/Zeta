@@ -3,7 +3,7 @@ package dev.meow.zeta.ui.component
 import dev.meow.zeta.render.RenderUtils
 import dev.meow.zeta.render.engine.Rect
 import dev.meow.zeta.render.engine.Rectangle
-import dev.meow.zeta.render.graphics.RenderStyle
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import dev.meow.zeta.render.graphics.font.FontRenderer
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.network.chat.Component
