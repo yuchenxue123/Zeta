@@ -6,6 +6,7 @@ import com.mojang.blaze3d.opengl.GlStateManager
 import com.mojang.blaze3d.opengl.GlTexture
 import com.mojang.blaze3d.systems.RenderSystem
 import com.mojang.blaze3d.vertex.PoseStack
+import dev.meow.zeta.Zeta
 import dev.meow.zeta.render.createBounds
 import dev.meow.zeta.render.graphics.RenderCallback
 import net.fabricmc.fabric.api.client.rendering.v1.SpecialGuiElementRegistry
@@ -55,7 +56,11 @@ class NanoRenderer(
         val depthTex = RenderSystem.outputDepthTextureOverride
 
         if (colorTex == null || depthTex == null) {
-            throw IllegalStateException()
+            return try {
+                throw NullPointerException("Color or Depth texture are null!")
+            } catch (e: NullPointerException) {
+                Zeta.logger.error("这不合理吧", e)
+            }
         }
 
         val glDevice = RenderSystem.getDevice() as GlDevice
@@ -64,13 +69,13 @@ class NanoRenderer(
 
         val fbo = glColorTex.getFbo(glDevice.directStateAccess(), glDepthTex)
 
-
         val width = colorTex.getWidth(0)
         val height = colorTex.getHeight(0)
 
         GlStateManager._glBindFramebuffer(GlConst.GL_FRAMEBUFFER, fbo)
         GlStateManager._viewport(0, 0, width, height)
 
+        // 解决字体渲染不出来的问题
         GL33.glBindSampler(0, 0)
 
         NanoRenderContext.beginFrame(width.toFloat(), height.toFloat())
@@ -88,10 +93,11 @@ class NanoRenderer(
         )
     }
 
+    // 这个我忘记是什么了，反正 mc 里渲染 gui 的 PictureInPictureRenderer 都是这样
     override fun getTranslateY(i: Int, j: Int): Float {
         return i / 2f
     }
 
-    override fun getTextureLabel(): String = "nano"
+    override fun getTextureLabel(): String = "nanovg"
 
 }

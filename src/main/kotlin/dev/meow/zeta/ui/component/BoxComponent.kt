@@ -3,6 +3,8 @@ package dev.meow.zeta.ui.component
 import dev.meow.zeta.render.RenderUtils
 import dev.meow.zeta.render.engine.Rect
 import dev.meow.zeta.render.engine.Rectangle
+import dev.meow.zeta.render.graphics.PaintMode
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import dev.meow.zeta.utils.holder.writeOnce
 import net.minecraft.client.gui.GuiGraphics
 import java.awt.Color
@@ -29,18 +31,13 @@ open class BoxComponent(
     private var onClick: BoxComponent.(button: Int) -> Unit by writeOnce(onClick)
 
     override fun render(context: GuiGraphics, mouseX: Double, mouseY: Double, deltaTime: Float) {
-        if (fill) {
-            if (radius > 0f) {
-                RenderUtils.drawRoundRect(x(), y(), width(), height(), radius, color)
-            } else {
-                RenderUtils.drawRect(x(), y(), width(), height(), color)
-            }
+        val mode = PaintMode.fromBoolean(fill = fill)
+        val style = RenderStyle(color, mode = mode)
+
+        if (radius > 0f) {
+            RenderUtils.drawRoundRect(x(), y(), width(), height(), radius, style)
         } else {
-            if (radius > 0f) {
-                RenderUtils.drawOutlineRoundRect(x(), y(), width(), height(), radius, color = color)
-            } else {
-                RenderUtils.drawOutlineRect(x(), y(), width(), height(), color = color)
-            }
+            RenderUtils.drawRect(x(), y(), width(), height(), style)
         }
     }
 

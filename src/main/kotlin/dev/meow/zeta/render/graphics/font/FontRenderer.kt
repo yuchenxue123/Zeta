@@ -15,7 +15,11 @@ interface FontRenderer {
 
     fun drawText(text: Component, x: Float, y: Float, color: Color): Float
 
+    fun drawCenteredText(text: Component, x: Float, y: Float, width: Float, height: Float, color: Color): Float
+
     fun drawText(text: String, x: Float, y: Float, color: Color): Float
+
+    fun drawCenteredText(text: String, x: Float, y: Float, width: Float, height: Float, color: Color): Float
 
     companion object {
 
@@ -33,19 +37,13 @@ interface FontRenderer {
 
         override fun height(text: String): Float = 0f
 
-        override fun drawText(
-            text: Component,
-            x: Float,
-            y: Float,
-            color: Color
-        ): Float = 0f
+        override fun drawText(text: Component, x: Float, y: Float, color: Color): Float = 0f
 
-        override fun drawText(
-            text: String,
-            x: Float,
-            y: Float,
-            color: Color
-        ): Float = 0f
+        override fun drawCenteredText(text: Component, x: Float, y: Float, width: Float, height: Float, color: Color): Float = 0f
+
+        override fun drawText(text: String, x: Float, y: Float, color: Color): Float = 0f
+
+        override fun drawCenteredText(text: String, x: Float, y: Float, width: Float, height: Float, color: Color): Float = 0f
 
     }
 

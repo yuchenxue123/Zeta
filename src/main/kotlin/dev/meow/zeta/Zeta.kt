@@ -17,7 +17,6 @@ object Zeta : ClientModInitializer {
     val logger = Logger(NAME)
 
     override fun onInitializeClient() {
-        // TODO: Use Mixin
         SpecialGuiElementRegistry.register(::NanoRenderer)
     }
 

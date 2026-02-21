@@ -3,6 +3,7 @@ package dev.meow.zeta.ui.component
 import dev.meow.zeta.render.RenderUtils
 import dev.meow.zeta.render.engine.Rect
 import dev.meow.zeta.render.engine.Rectangle
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import dev.meow.zeta.render.graphics.font.FontRenderer
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.network.chat.Component
@@ -26,7 +27,7 @@ class TextComponent(
 
     override fun render(context: GuiGraphics, mouseX: Double, mouseY: Double, deltaTime: Float) {
 
-        RenderUtils.drawRect(x(), y(), width(), height(), background)
+        RenderUtils.drawRect(x(), y(), width(), height(), RenderStyle(color))
 
         font.drawText(text, x() + padding.x(), y() + padding.y(), color)
 

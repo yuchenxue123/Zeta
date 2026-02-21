@@ -1,38 +1,38 @@
 package dev.meow.zeta.render.graphics
 
+import dev.meow.zeta.render.engine.Positionable
 import dev.meow.zeta.render.graphics.font.FontRenderer
+import dev.meow.zeta.render.graphics.style.GradientStyle
+import dev.meow.zeta.render.graphics.style.RenderStyle
 import net.minecraft.client.gui.GuiGraphics
-import org.joml.Vector2f
 import java.awt.Color
 
 interface RenderContext {
 
     fun drawing(graphics: GuiGraphics, block: RenderCallback)
 
-    fun drawRect(x: Float, y: Float, width: Float, height: Float, color: Color)
+    fun drawRect(x: Float, y: Float, width: Float, height: Float, style: RenderStyle)
 
-    fun drawOutlineRect(x: Float, y: Float, width: Float, height: Float, thickness: Float = 1f, color: Color)
+    fun drawGradientRect(x: Float, y: Float, width: Float, height: Float, style: GradientStyle)
 
-    fun drawRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, color: Color)
+    fun drawRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, style: RenderStyle)
 
-    fun drawOutlineRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, thickness: Float = 1f, color: Color)
+    fun drawGradientRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, style: GradientStyle)
 
-    fun drawCircle(x: Float, y: Float, radius: Float, color: Color)
+    fun drawCircle(x: Float, y: Float, radius: Float, style: RenderStyle)
 
     fun drawText(font: FontRenderer, text: String, x: Float, y: Float, color: Color)
 
-    fun drawLine(x: Float, y: Float, m: Float, n: Float, thickness: Float = 1f, color: Color)
+    fun drawLineAbsolute(x: Float, y: Float, m: Float, n: Float, style: RenderStyle)
 
-    fun drawVerticalLine(x: Float, y: Float, long: Float, thickness: Float = 1f, color: Color)
+    fun drawLine(x: Float, y: Float, long: Float, style: RenderStyle, orientation: Orientation)
 
-    fun drawHorizontalLine(x: Float, y: Float, long: Float, thickness: Float = 1f, color: Color)
+    fun drawPolygon(x: Float, y: Float, points: Array<Positionable>, style: RenderStyle)
 
-    fun drawPolygon(x: Float, y: Float, points: Array<Vector2f>, color: Color)
-
-    fun drawPolyline(
+    fun drawLines(
         x: Float,
         y: Float,
-        points: Array<Vector2f>,
+        points: Array<Positionable>,
         thickness: Float = 1f,
         color: Color,
         close: Boolean = true
